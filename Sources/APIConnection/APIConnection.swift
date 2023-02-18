@@ -39,13 +39,18 @@ public class APIConnection {
 
     func getResponse(prompt: String) async throws -> String {
         let completion = try await openAIClient.completions.create(
-            model: Model.GPT3.davinci,
+            model: Model.GPT3.textDavinci003,
             prompts: [prompt],
-            maxTokens: 10,
-            temperature: 0.2
+            maxTokens: 68,
+            temperature: 0.7,
+            topP: 1,
+            echo: false,
+            presencePenalty: 0,
+            frequencyPenalty: 0,
+            bestOf: 1
         )
 
         history.append((prompt, completion.choices[0].text))
-        return completion.choices[0].text
+        return String(completion.choices.map {$0.text + "\n" + $0.finishReason}.joined(separator: "\n"))
     }
 }
