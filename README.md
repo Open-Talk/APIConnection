@@ -1,3 +1,3 @@
 # APIConnection
 
-A description of this package.
+API Connection package for OpenTalk
