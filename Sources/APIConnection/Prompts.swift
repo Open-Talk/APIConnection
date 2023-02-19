@@ -12,6 +12,7 @@ public enum Views: String {
     case Conversation
     case Skins
     case Voices
+    case Settings
 }
 
 func promptFor(view: Views, history: [(String, String)]) -> String {
