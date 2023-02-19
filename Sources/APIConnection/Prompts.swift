@@ -26,7 +26,14 @@ I will give you a transcript of a job interview. Specifically, of a prospective 
 \nReply with only the Interviewer's response, which should be 50 words. Do not add any quotation marks to your response.
 """
     case .OrderCoffee:
-        return ""
+        return """
+I will give you a transcript of a customer ordering coffee from you, the barista. The following lines will start with either 'Barista' or 'Customer'.
+
+"""
+        + history.map { "\nCustomer: " + $0.0 + "\nBarista: " + $0.1 }.joined(separator: "") +
+"""
+\nReply with only the Barista's response, which should be 50 words or less. Do not add any quotation marks to your response.
+"""
     case .Conversation:
         return "" //Keep this, free conversation
     default: //For non-chat screens

@@ -10,7 +10,7 @@ enum VoiceType: String {
     case standardMale = "en-US-Standard-D"
 }
 
-public class APIConnection {
+public class APIConnection: ObservableObject {
     
     let ttsAPIUrl = "https://texttospeech.googleapis.com/v1beta1/text:synthesize"
     let googleAPIKey = "AIzaSyAhn9kCXeF9bcr_jObxK9sfE3ZVFrnL4ds"
@@ -19,7 +19,7 @@ public class APIConnection {
     private var openAIClient: Client
     private var httpClient: HTTPClient
     
-    private var views: Views = .Interview
+    private var views: Views = .OrderCoffee
     private var history: [(String, String)] = []
 
 
@@ -34,11 +34,11 @@ public class APIConnection {
     }
     
     public func change(view: Views) {
-        views = view
+        self.views = view
     }
     
     public func reset() {
-        history = []
+        self.history = []
     }
 
     public func getResponse(prompt: String) async throws -> String {
