@@ -9,6 +9,9 @@
 public enum Views: String {
     case Interview
     case OrderCoffee
+    case Conversation
+    case Skins
+    case Voices
 }
 
 func promptFor(view: Views, history: [(String, String)]) -> String {
@@ -23,6 +26,10 @@ I will give you a transcript of a job interview. Specifically, of a prospective 
 \nReply with only the Interviewer's response, which should be 50 words. Do not add any quotation marks to your response.
 """
     case .OrderCoffee:
+        return ""
+    case .Conversation:
+        return "" //Keep this, free conversation
+    default: //For non-chat screens
         return ""
     }
 }
