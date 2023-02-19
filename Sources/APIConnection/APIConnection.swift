@@ -13,8 +13,8 @@ enum VoiceType: String {
 public class APIConnection: ObservableObject {
     
     let ttsAPIUrl = "https://texttospeech.googleapis.com/v1beta1/text:synthesize"
-    let googleAPIKey = "AIzaSyAhn9kCXeF9bcr_jObxK9sfE3ZVFrnL4ds"
-    private static var openApiKey = "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"
+    let googleAPIKey = APIKeys.googleAPI
+    private static var openApiKey = APIKeys.openAIAPI
     private static var organization = ""
     private var openAIClient: Client
     private var httpClient: HTTPClient
