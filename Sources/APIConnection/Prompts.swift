@@ -11,14 +11,16 @@ public enum Views: String {
     case OrderCoffee
 }
 
-func promptFor(view: Views) -> String {
+func promptFor(view: Views, history: [(String, String)]) -> String {
     switch view {
     case .Interview:
         return """
 I will give you a transcript of a job interview. Specifically, of a prospective software engineer. The following lines will start with either 'Interviewer' or 'Interviewee'.
-Interviewer:
 
-Reply with only the Interviewer's response, which should be around 50 words.
+"""
+        + history.map { "\nInterviewee: " + $0.0 + "\nInterviewer: " + $0.1 }.joined(separator: "") +
+"""
+\nReply with only the Interviewer's response, which should be 50 words. Do not add any quotation marks to your response.
 """
     case .OrderCoffee:
         return ""
